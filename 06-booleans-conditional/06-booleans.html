@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Booleans</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <script>
+            // const age = 15;
+
+            // if (age > 16) {
+            //     console.log("can drive");
+            //     console.log("ok");
+            // } else if (age >= 14) {
+            //     console.log("almost there");
+            // } else {
+            //     console.log("can't drive");
+            // }
+
+            // if (5) {
+            //     console.log('truthy');
+            // }
+
+            // :?
+            true ? 'truthy' : 'falsy'
+            result = true ? 'truthy' : 'falsy';
+            console.log(result); // truthy
+
+            // &&
+            false && console.log('hello'); // no output
+            const message = 5 && 'hello'; // If LHS is truthy, then RHS. 
+            console.log(message); // hello
+
+            // ||
+            let currency = 'EUR' || 'USD'; // If LHS is truthy, then left. If falsey, then RHS.
+            console.log(currency); // EUR
+            currency = undefined || 'USD'; // If LHS is truthy, then left. If falsey, then RHS.
+            console.log(currency); // USD
+
+
+        </script>
+        
+    </body>
+</html>

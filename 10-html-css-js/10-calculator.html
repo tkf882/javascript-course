@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <link rel="stylesheet" href="styles/10-calculator.css">
+
+    </head>
+    <body>
+
+        <p class="current-cal js-current-cal"></p>
+
+        <p>
+            <button  onclick="
+                updateCalculation(calculation, '1');
+            ">
+                1
+            </button>
+
+            <button onclick="
+                updateCalculation(calculation, '2');
+            ">
+                2
+            </button>
+
+            <button onclick="
+                updateCalculation(calculation, '3');
+            ">
+                3
+            </button>
+
+            <button class="operation-button" onclick="
+                updateCalculation(calculation, ' + ');
+            ">
+                +
+            </button>
+        </p>
+
+        <p>
+            <button onclick="
+                updateCalculation(calculation, '4');
+            ">
+                4
+            </button>
+
+            <button onclick="
+                updateCalculation(calculation, '5');
+            ">
+                5
+            </button>
+
+            <button onclick="
+                updateCalculation(calculation, '6');
+            ">
+                6
+            </button>
+
+            <button class="operation-button" onclick="
+                updateCalculation(calculation, ' - ');
+            ">
+                -
+            </button>
+        </p>
+
+        <p>
+            <button onclick="
+                updateCalculation(calculation, '7');
+            ">
+                7
+            </button>
+
+            <button onclick="
+                updateCalculation(calculation, '8');
+            ">
+                8
+            </button>
+
+            <button onclick="
+                updateCalculation(calculation, '9');
+            ">
+                9
+            </button>
+
+            <button class="operation-button" onclick="
+                updateCalculation(calculation, ' * ');
+            ">
+                *
+            </button>
+        </p>
+
+        <p>
+            <button onclick="
+                updateCalculation(calculation, '0');
+            ">
+                0
+            </button>
+
+            <button onclick="
+                updateCalculation(calculation, '.');
+            ">
+                .
+            </button>
+
+            <button onclick="
+                calculation = eval(calculation);
+                console.log(calculation);
+                // calculation = '';
+                localStorage.setItem('calc', calculation);
+                displayCal();
+            ">
+                =
+            </button>
+
+            <button class="operation-button" onclick="
+                updateCalculation(calculation, ' / ');
+            ">
+                /
+            </button>
+        </p>
+
+        <button class="clear-button" onclick="
+            calculation = '';
+            localStorage.setItem('calc', calculation);
+            displayCal();
+        ">
+            Clear
+        </button>
+
+        <script src="scripts/10-calculator.js"></script>
+
+    </body>
+</html>

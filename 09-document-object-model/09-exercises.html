@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        
+        <!-- 1 -->
+         <p>1</p>
+        <button class="js-coin-button" onclick="
+            document.querySelector('.js-choice').innerHTML = 'You chose: heads';    
+        ">heads</button>
+        <button class="js-coin-button" onclick="
+            document.querySelector('.js-choice').innerHTML = 'You chose: tails';    
+        ">heads</button>
+        <p class="js-choice"></p>
+        
+
+        <!-- 2 -->
+         <p>2</p>
+        <input class="js-input-box" type="text" onkeydown="
+            inputEnter(event)
+        ">
+        <button onclick="
+            updateName();
+        ">Submit</button>
+        <p class="js-name"></p>
+
+        <!-- 3 -->
+         <p>3</p>
+        <p>Amazon Shipping Calculator</p>
+        <p>Orders under $40 = +$10 shipping.</p>
+        <p>Orders over $40 = FREE shipping. </p>
+        <input class="js-cost-input" onkeydown ="
+            handleCostKeyDown(event);
+        " type="text" placeholder="Cost of Order">
+        <button onclick="
+            calculateTotal();
+        ">calculate</button>
+        <p class="js-total-cost"></p>
+
+        <!-- 4 -->
+        <input class="js-live-input" type="text" onkeyup="
+            inputLiveUpdate(event);
+        ">
+        <p class="js-live-input-text"></p>
+
+        <script>
+            // 2
+            function updateName() {
+                const name = document.querySelector('.js-input-box').value;
+                document.querySelector('.js-name').innerHTML = `You name is: ${name}`;
+            }
+            
+            function inputEnter(event) {
+                if (event.key === 'Enter') {
+                    updateName();
+                }
+            }
+
+            // 3
+            function calculateTotal() {
+                const inputElement = document.querySelector('.js-cost-input');
+                let cost = Number(inputElement.value);
+                if (cost < 40) {
+                    cost = cost *= 100; // convert to cents
+                    cost = cost + 1000; // add 100 cents ($10)
+                    cost /= 100; // convert to dollars
+                }
+                document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
+            }
+
+            function handleCostKeyDown(event) {
+                if (event.key === 'Enter') {
+                    calculateTotal();
+                }
+            }
+
+            // 4
+            function inputLiveUpdate(event) {
+                const textElement = document.querySelector('.js-live-input');
+                document.querySelector('.js-live-input-text').innerHTML = textElement.value;
+            }
+
+            
+        </script>
+        
+    </body>
+</html>

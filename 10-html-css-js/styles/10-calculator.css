@@ -1,0 +1,36 @@
+p {
+    margin: 0px 0px;
+
+}
+
+body {
+    font-family: Arial;
+    background-color: black;
+    color: white;
+}
+
+button {
+    color: white;
+    background-color: rgb(59, 59, 59);
+    font-family: Arial;
+    font-size: 18px;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    border-style: none;
+    margin-right: 2px;
+    margin-bottom: 10px;
+}
+
+.clear-button {
+    font-size: 12px;
+}
+
+.operation-button {
+    background-color: rgb(254, 160, 10);
+}
+
+.current-cal {
+    font-size: 32px;
+    margin-bottom: 15px;
+}

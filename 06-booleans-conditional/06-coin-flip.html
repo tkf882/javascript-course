@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Coin Flip</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <p>Coin Flip</p>
+
+        <script>
+            let result = 0; // Heads: between 0 and <0.5. Tails: Between >=0.5 and 1
+        </script>
+        
+        <button onclick="
+            result = Math.random(); // Heads: between 0 and <0.5. Tails: Between >=0.5 and 1
+            (result < 0.5) ? console.log('Heads: You guessed correctly') : console.log('Tails: You guessed incorrectly');
+        ">Heads</button>
+
+        <button onclick="
+            result = Math.random(); // Heads: between 0 and <0.5. Tails: Between >=0.5 and 1
+            (result < 0.5) ? console.log('Heads: You guessed incorrectly') : console.log('Tails: You guessed correctly');
+        ">Tails</button>
+        
+    </body>
+</html>

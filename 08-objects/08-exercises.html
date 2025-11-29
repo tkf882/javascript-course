@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+
+        <p>Hello</p>
+
+        <script>
+            
+            // object example
+            const product1 = {
+                name: 'basketball',
+                price: 2095
+            };
+            console.log(product1);
+            product1.price += 500;
+            console.log(product1);
+            product1['delivery-time'] = '3 days';
+            console.log(product1);
+
+            function comparePrice(product1, product2) {
+                if (product1.price < product2.price) {
+                    return product1;
+                } else {
+                    return product2;
+                }
+            }
+
+            const product2 = {
+                name: 'soccer ball',
+                price: 1600
+            };
+
+            console.log(comparePrice(product1, product2));
+
+            function isSameProduct(product1, product2) {
+                // if (product1.name !== product2.name || product1.price !== product2.price) {
+                //     return false;
+                // }
+                // return true;
+
+                return (product1.name !== product2.name || product1.price !== product2.price) ? false : true;
+            }
+
+            console.log(isSameProduct(product1, product1));
+            console.log(isSameProduct(product2, product2));
+            console.log(isSameProduct(product1, product2));
+
+            // string methood toLowerCase()
+            const message = 'Good Morning';
+            console.log(`${message} => ${message.toLowerCase()}`);
+
+            // string method .repeat(n)
+            console.log(message.repeat(3));
+
+            
+
+
+        </script>
+        
+    </body>
+</html>
