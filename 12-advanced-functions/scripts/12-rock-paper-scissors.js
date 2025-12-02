@@ -11,7 +11,7 @@ score = {
 updateScoreElement();
 
 function updateScoreElement() {
-document.querySelector('.js-score').innerHTML = `Wins: ${score.wins}, Losses: ${score.loses}, Ties: ${score.ties}`;
+    document.querySelector('.js-score').innerHTML = `Wins: ${score.wins}, Losses: ${score.loses}, Ties: ${score.ties}`;
 }
 
 function pickComputerMove() {
@@ -37,11 +37,37 @@ function autoPlay() {
             playGame(playerMove);
         }, 1000);
         isAutoPlaying = true;
+        document.querySelector('.js-auto-play-button').innerHTML = 'Stop Playing';
     } else {
         clearInterval(intervalId);
         isAutoPlaying = false;
+        document.querySelector('.js-auto-play-button').innerHTML = 'Auto Play';
     }
 }
+
+function reset() {
+    document.querySelector('.js-confirm-reset').innerHTML = `
+    Are you sure you want to reset the score?
+    <button class='reset-score-button js-reset-confirm-yes'>Yes</button>
+    <button class='reset-score-button js-reset-confirm-no'>No</button>
+    `;
+
+    document.querySelector('.js-reset-confirm-yes').addEventListener('click', () => {
+        score.wins = 0;
+        score.loses = 0;
+        score.ties = 0;
+        localStorage.removeItem('score');
+        updateScoreElement();
+        document.querySelector('.js-confirm-reset').innerHTML = '';
+    })
+
+    document.querySelector('.js-reset-confirm-no').addEventListener('click', () => {
+        document.querySelector('.js-confirm-reset').innerHTML = '';
+    })
+
+}
+
+
 
 
 document.querySelector('.js-rock-button').addEventListener('click', () => {
@@ -62,6 +88,16 @@ document.body.addEventListener('keydown', (event) => {
         playGame('paper');
     } else if (event.key === 's') {
         playGame('scissors');
+    }
+})
+
+document.querySelector('.js-reset-score-button').addEventListener('click', () => reset());
+
+document.body.addEventListener('keydown', (event) => {
+    if (event.key === 'a') {
+        autoPlay();
+    } else if (event.key === 'Backspace') {
+        reset();
     }
 })
 
