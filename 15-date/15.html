@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+
+        <p>Hello</p>
+
+        <script src="https://unpkg.com/dayjs@1.11.10/dayjs.min.js"></script>
+        <script>
+            const today = dayjs();
+            console.log(today.format('MMMM, D')); // December, 3
+            console.log((today.add(5, 'days').format('MMMM, D'))); // December, 8
+
+            function isWeekend(date) {
+                const day = date.format('dddd'); // Monday, Tues, ...
+                return day === 'Saturday' || day === 'Sunday';
+            }
+
+            console.log(isWeekend(today));
+            console.log(isWeekend(today.add(3, 'days')));
+
+
+        </script>
+
+    </body>
+</html>
