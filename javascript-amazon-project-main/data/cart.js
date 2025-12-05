@@ -36,10 +36,10 @@ export function saveToStorage() {
 
 export function addToCart(productId) {
     // get the quantity from the drop down selector (doesn't work with jasmine tests)
-    // const quantity = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
+    const quantity = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
 
     // this version works with jasmine tests
-    const quantity = 1;
+    // const quantity = 1;
 
 
     // see if item already exists
@@ -107,4 +107,17 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
         matchingItem.deliveryOptionId = deliveryOptionId;
         saveToStorage();
     }
+}
+
+export function loadCart(fun) {
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('load', () => {
+    console.log(xhr.response);
+
+    fun();
+  });
+
+  xhr.open('GET', 'https://supersimplebackend.dev/cart');
+  xhr.send();
 }
