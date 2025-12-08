@@ -1,4 +1,5 @@
-import {cart, addToCart, calculateCartQuantity} from '../data/cart.js';
+// import {cart, addToCart, calculateCartQuantity} from '../data/cart.js';
+import {cart} from '../data/cart-class.js';
 import {products, loadProducts} from '../data/products.js';
 import {formatCurrency} from './utils/money.js';
 
@@ -65,7 +66,7 @@ function renderProductsGrid() {
 
   function updateCartQuantity() {
       // Update the cart quantity and web page, so stays in this file instead of cart.js
-      const cartQuantity = calculateCartQuantity();
+      const cartQuantity = cart.calculateCartQuantity();
       document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
   }
 
@@ -77,7 +78,7 @@ function renderProductsGrid() {
           // const productId = button.dataset.productId;
           const {productId} = button.dataset;
           
-          addToCart(productId);
+          cart.addToCart(productId);
 
           updateCartQuantity();
 

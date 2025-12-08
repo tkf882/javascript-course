@@ -30,10 +30,10 @@ class Cart {
 
     addToCart(productId) {
         // get the quantity from the drop down selector (doesn't work with jasmine tests)
-        // const quantity = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
+        const quantity = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
 
         // this version works with jasmine tests
-        const quantity = 1;
+        // const quantity = 1;
 
 
         // see if item already exists
@@ -104,10 +104,10 @@ class Cart {
 }
 
 
-const cart = new Cart('cart-oop');
+export const cart = new Cart('cart-oop');
 const businesscart = new Cart('cart-business');
 
 
-console.log(cart);
-console.log(businesscart);
+// console.log(cart);
+// console.log(businesscart);
 

@@ -1,8 +1,9 @@
-import {calculateCartQuantity,
-        cart, 
-        removeFromCart, 
-        updateQuantity,
-        updateDeliveryOption} from '../../data/cart.js';
+// import {calculateCartQuantity,
+//         cart, 
+//         removeFromCart, 
+//         updateQuantity,
+//         updateDeliveryOption} from '../../data/cart.js';
+import {cart} from '../../data/cart-class.js';
 import {products, getProduct} from '../../data/products.js';
 import {formatCurrency} from '.././utils/money.js';
 import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
@@ -14,7 +15,7 @@ import { renderCheckoutHeader } from "./checkoutHeader.js";
 export function renderOrderSummary() {
   let cartSummaryHTML = '';
 
-  cart.forEach((cartItem) => {
+  cart.cartItems.forEach((cartItem) => {
     const productId = cartItem.productId;
     const quantity = cartItem.quantity;
 
@@ -117,7 +118,7 @@ export function renderOrderSummary() {
   document.querySelectorAll('.js-delete-link').forEach((link) => {
     link.addEventListener('click', () => {
       const productId = link.dataset.productId;
-      removeFromCart(productId);
+      cart.removeFromCart(productId);
 
       // const container = document.querySelector(`.js-cart-item-container-${productId}`);
       // container.remove();
@@ -148,7 +149,7 @@ export function renderOrderSummary() {
       return;
     } 
 
-    updateQuantity(productId, newQuantity);
+    cart.updateQuantity(productId, newQuantity);
 
     // Update HTML
     // const quantityElement = document.querySelector(`.js-quantity-label-${productId}`);
@@ -179,7 +180,7 @@ export function renderOrderSummary() {
   document.querySelectorAll(`.js-delivery-option`).forEach((element) => {
     element.addEventListener('click', () => {
       const {productId, deliveryOptionId} = element.dataset;
-      updateDeliveryOption(productId, deliveryOptionId);
+      cart.updateDeliveryOption(productId, deliveryOptionId);
       renderOrderSummary();
       renderPaymentSummary();
     })
