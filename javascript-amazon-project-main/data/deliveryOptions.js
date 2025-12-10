@@ -35,18 +35,25 @@ function isWeekend(date) {
 export function calculateDeliveryDate(deliveryOption) {
     // Note: Skips all saturdays and sundays
     // deliveryOption.deliveryDays = 7, 3, or 1
-    let numDays = deliveryOption.deliveryDays;
+    // let numDays = deliveryOption.deliveryDays;
 
+    // let currentDay = dayjs();
+
+    // while (numDays > 0) {
+    //     currentDay = currentDay.add(1, 'days');
+    //     if (!isWeekend(currentDay)) {
+    //         numDays--
+    //     }
+    // }
+
+    // // console.log(currentDay.format('dddd, MMMM D'));
+
+    // return currentDay.format('dddd, MMMM D');
+
+
+
+    // version that doesn't skip weekends (consistent with his backend)
     let currentDay = dayjs();
-
-    while (numDays > 0) {
-        currentDay = currentDay.add(1, 'days');
-        if (!isWeekend(currentDay)) {
-            numDays--
-        }
-    }
-
-    // console.log(currentDay.format('dddd, MMMM D'));
-
-    return currentDay.format('dddd, MMMM D');
+    let numDays = deliveryOption.deliveryDays;
+    return currentDay.add(numDays, 'days').format('dddd, MMMM D');
 }

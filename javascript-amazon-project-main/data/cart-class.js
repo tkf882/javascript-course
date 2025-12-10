@@ -29,12 +29,11 @@ class Cart {
 
 
     addToCart(productId) {
-        // get the quantity from the drop down selector (doesn't work with jasmine tests)
-        const quantity = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
-
-        // this version works with jasmine tests
-        // const quantity = 1;
-
+        const selectorElement = document.querySelector(`.js-quantity-selector-${productId}`);
+        let quantity = 1;
+        if (selectorElement) {
+            quantity = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
+        }
 
         // see if item already exists
         let matchingItem;
@@ -101,11 +100,23 @@ class Cart {
         }
     }
 
+    async loadCartFetch() {
+        const response = await fetch('https://supersimplebackend.dev/cart');
+        const text = await response.text();
+        console.log(text + 'load from backend test');
+        return text;
+    }
+
+    resetCart() {
+        this.cartItems = [];
+        this.saveToStorage();
+    }
+
 }
 
 
 export const cart = new Cart('cart-oop');
-const businesscart = new Cart('cart-business');
+
 
 
 // console.log(cart);

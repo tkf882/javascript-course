@@ -2,21 +2,29 @@ import { renderOrderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import { renderCheckoutHeader } from "./checkout/checkoutHeader.js";
 import {loadProducts, loadProductsFetch} from '../data/products.js';
-import {loadCart} from '../data/cart.js';
+import {cart} from '../data/cart-class.js';
 // import '../data/car.js';
 // import '../data/cart-class.js'; // runs all code without importing anything
 // import '../data/backend-practice.js';
 
 async function loadPage() {
     try {
-        await loadProductsFetch();
+        // await loadProductsFetch();
 
-        const value = await new Promise((resolve, reject) => {
-            loadCart(() => {
-                // reject('error3')
-                resolve('value3');
-            });
-        });
+        // const value = await new Promise((resolve, reject) => {
+        //     loadCart(() => {
+        //         // reject('error3')
+        //         resolve('value3');
+        //     });
+        // });
+
+        // await cart.loadCartFetch();
+
+
+        await Promise.all([
+            loadProductsFetch(),
+            cart.loadCartFetch()
+        ])
 
         // console.log(value); // value3
 
